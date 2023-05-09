@@ -1,6 +1,6 @@
 import { IsEnum, IsInt, IsNotEmpty, IsString, Length } from 'class-validator';
 
-enum UserRole {
+export enum UserRole {
   ADMIN = 'admin',
   MANAGER = 'manager',
   EMPLOYEE = 'employee',

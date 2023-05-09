@@ -1,8 +1,9 @@
-import { IsNotEmpty, IsString, Length } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { UserRole } from './create-user.dto';
 
 export class UpdateUserDto {
   @IsNotEmpty()
   @IsString()
-  @Length(2, 25)
-  name: string;
+  @IsEnum(UserRole)
+  role: UserRole;
 }
