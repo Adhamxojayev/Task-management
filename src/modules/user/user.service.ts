@@ -8,15 +8,15 @@ export class UserService {
   constructor(@InjectKnex() private readonly knex: Knex) {}
 
   async create(createUserDto: CreateUserDto) {
-    return this.knex('users').insert(createUserDto).returning('*');
+    return this.knex('Users').insert(createUserDto).returning('*');
   }
 
   findAll() {
-    return this.knex('users');
+    return this.knex('Users');
   }
 
   async findOne(id: number) {
-    const [user] = await this.knex('users').where({ id });
+    const [user] = await this.knex('Users').where({ id });
     if (!user) {
       throw new NotFoundException('user not found');
     }
@@ -26,7 +26,7 @@ export class UserService {
   async update(id: number, updateUserDto: UpdateUserDto) {
     const user = await this.findOne(id);
     if (user) {
-      await this.knex('users').where({ id }).update({
+      await this.knex('Users').where({ id }).update({
         name: updateUserDto.name,
       });
 
@@ -40,7 +40,7 @@ export class UserService {
   async remove(id: number) {
     const user = await this.findOne(id);
     if (user) {
-      await this.knex('users').where({ id }).del();
+      await this.knex('Users').where({ id }).del();
 
       return {
         success: true,
