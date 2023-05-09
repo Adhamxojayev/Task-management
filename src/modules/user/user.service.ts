@@ -27,12 +27,12 @@ export class UserService {
     const user = await this.findOne(id);
     if (user) {
       await this.knex('Users').where({ id }).update({
-        name: updateUserDto.name,
+        role: updateUserDto.role,
       });
 
       return {
         success: true,
-        message: 'user details updated successfully.',
+        message: 'user role updated successfully.',
       };
     }
   }
