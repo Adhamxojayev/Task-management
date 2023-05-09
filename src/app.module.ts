@@ -3,6 +3,7 @@ import { SharedModule } from './shared/shared.module';
 import { UserModule } from './modules/user/user.module';
 import { OrganizationModule } from './modules/organization/organization.module';
 import { OrganizationUserModule } from './modules/organization-user/organization-user.module';
+import { ProjectModule } from './modules/project/project.module';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { OrganizationUserModule } from './modules/organization-user/organization
     UserModule,
     OrganizationModule,
     OrganizationUserModule,
+    ProjectModule,
   ],
   controllers: [],
   providers: [],
