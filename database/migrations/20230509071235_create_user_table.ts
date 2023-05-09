@@ -10,7 +10,7 @@ export async function up(knex: Knex): Promise<void> {
         enumName: 'role',
       })
       .notNullable();
-    table.timestamp('created_by').defaultTo(knex.fn.now());
+    table.integer('created_by').references('users.id');
   });
 }
 
