@@ -10,19 +10,15 @@ export class TaskService {
   constructor(@InjectKnex() private readonly knex: Knex) {}
 
   async create(createTaskDto: CreateTaskDto): Promise<ResponseData> {
-    const tasks = await this.knex('Task')
+    return this.knex('Task')
       .insert(createTaskDto)
       .returning('*')
-      .then((d) => d)
-      .catch((e) => ({
-        error: e.name,
-        messages: e.detail,
-      }));
-    return {
-      success: true,
-      message: 'Comment added to post successfully.',
-      data: tasks,
-    };
+      .then((data) => ({
+        success: true,
+        message: 'User added successfully.',
+        data,
+      }))
+      .catch((e) => ({ success: false, message: e.detail, data: {} }));
   }
 
   async findAll({

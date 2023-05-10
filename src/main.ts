@@ -1,3 +1,4 @@
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { HttpStatus, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
@@ -15,6 +16,14 @@ async function bootstrap() {
     }),
   );
 
+  const options = new DocumentBuilder()
+    .setTitle('Task management API')
+    .setDescription('test project')
+    .setVersion('1.0')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api/docs', app, document);
   await app.listen(configService.get<number>('PORT'));
 }
 bootstrap();
