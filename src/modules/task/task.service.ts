@@ -20,7 +20,7 @@ export class TaskService {
       }));
     return {
       success: true,
-      message: 'Comment added to post successfully.',
+      message: 'Task added successfully.',
       data: tasks,
     };
   }
