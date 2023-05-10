@@ -26,7 +26,7 @@ export class StatisticsService {
     return {
       success: true,
       message: 'Statistics details fetch successfully.',
-      data: { organization, project, task },
+      data: { ...organization, ...project, ...task },
     };
   }
 

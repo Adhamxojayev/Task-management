@@ -9,19 +9,15 @@ export class ProjectService {
   constructor(@InjectKnex() private readonly knex: Knex) {}
 
   async create(createProjectDto: CreateProjectDto): Promise<ResponseData> {
-    const project = await this.knex('Project')
+    return this.knex('Project')
       .insert(createProjectDto)
       .returning('*')
-      .then((d) => d)
-      .catch((e) => ({
-        error: e.name,
-        messages: e.detail,
-      }));
-    return {
-      success: true,
-      message: 'Project added successfully.',
-      data: project,
-    };
+      .then((data) => ({
+        success: true,
+        message: 'organization added successfully.',
+        data,
+      }))
+      .catch((e) => ({ success: false, message: e.detail, data: {} }));
   }
 
   async findAll(): Promise<ResponseData> {
