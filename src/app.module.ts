@@ -5,6 +5,7 @@ import { OrganizationModule } from './modules/organization/organization.module';
 import { OrganizationUserModule } from './modules/organization-user/organization-user.module';
 import { ProjectModule } from './modules/project/project.module';
 import { TaskModule } from './modules/task/task.module';
+import { StatisticsModule } from './modules/statistics/statistics.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { TaskModule } from './modules/task/task.module';
     OrganizationUserModule,
     ProjectModule,
     TaskModule,
+    StatisticsModule,
   ],
   controllers: [],
   providers: [],
